@@ -237,16 +237,16 @@ async function runModel(){
     alert("Kindly fill all the details properly");
   }
   else{
+
+    // Compile the model
     model.compile({
       optimizer: optimizer,
       loss:loss,
       metrics: [metrics]
     });
-
+    // Start training
     train(epoch, batch);
-
     const tail = document.getElementById('final');
     tail.textContent = "Model is training... You can view it on console";
   }
-
 }
