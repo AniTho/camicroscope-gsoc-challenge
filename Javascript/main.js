@@ -2,6 +2,81 @@
 var layer_no = 0;
 let model = null;
 
+// Define x and y for demo purpose
+var x = null;
+var y = null;
+
+
+// Create demo  regression data1
+function addData1(){
+  x = tf.tensor2d([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], [9,1]);
+  y = tf.tensor2d([0.1, 0.2, 0.2, 0.3, 0.3, 0.4, 0.4, 0.5, 0.5], [9,1]);
+  const addButton1 = document.getElementById('add-data1');
+  const addButton2 = document.getElementById('add-data2');
+  const layerButton = document.getElementById('add-button');
+
+  // Disable data loading button and enable add layer button
+  addButton1.disabled = true;
+  addButton1.style.backgroundColor = '#333333';
+  addButton1.style.color = '#ffffff';
+  addButton2.disabled = true;
+  addButton2.style.backgroundColor = '#333333';
+  addButton2.style.color = '#ffffff';
+  layerButton.disabled = false;
+  layerButton.style.backgroundColor = "#c1ff86";
+  layerButton.style.color = "#000000";
+
+  // Show that data is loaded
+  const head = document.getElementById('start');
+  head.textContent = "Data Loaded... and I/P is of size (9,1) and O/P is of size (9,1)";
+
+}
+
+// Create demo Classification data2
+function addData2(){
+  x = tf.tensor2d([[1,1], [1,2], [1,3], [2,2], [3,3], [3,2], [4,4], [4,3], [5,1], [6,3]], [10,2]);
+  y = tf.tensor2d([1, 1, 1, 1, 1, -1, -1, -1, -1, -1], [10,1]);
+  const addButton1 = document.getElementById('add-data1');
+  const addButton2 = document.getElementById('add-data2');
+  const layerButton = document.getElementById('add-button');
+
+  // Disable data loading button and enable add layer button
+  addButton1.disabled = true;
+  addButton1.style.backgroundColor = '#333333';
+  addButton1.style.color = '#ffffff';
+  addButton2.disabled = true;
+  addButton2.style.backgroundColor = '#333333';
+  addButton2.style.color = '#ffffff';
+  layerButton.disabled = false;
+  layerButton.style.backgroundColor = "#c1ff86";
+  layerButton.style.color = "#000000";
+
+  // Show that data is loaded
+  const head = document.getElementById('start');
+  head.textContent = "Data Loaded... and I/P is of size (10,2) and O/P is of size (10,1) with 2 labels";
+
+}
+
+
+// Create a basic Model without any functionality
+function createModel(){
+  model = tf.sequential();
+  layer_no += 1;
+  var addButton1 = document.getElementById('add-data1');
+  addButton1.style.display = 'none';
+  var addButton2 = document.getElementById('add-data2');
+  addButton2.style.display = 'none';
+  //var head = document.getElementById('start');
+  //head.textContent = "The";
+  var denseButton = document.getElementById('dense-button');
+  denseButton.style.display = 'inline';
+  var addButton = document.getElementById('add-button');
+  addButton.style.display = 'none';
+  var addData = document.getElementById('add-button');
+  addData.style.display = 'none';
+}
+
+
 // Display content to be entered for dense layer for model creation
 function denseLayer(){
 
@@ -41,18 +116,6 @@ function denseLayer(){
     inputDimLab.style.display = "inline-block";
 
   }
-}
-
-// Create a basic Model without any functionality
-function createModel(){
-  model = tf.sequential();
-  layer_no += 1;
-  var denseButton = document.getElementById('dense-button');
-  denseButton.style.display = 'inline';
-  var addButton = document.getElementById('add-button');
-  addButton.style.display = 'none';
-  var addData = document.getElementById('add-data');
-  addData.style.display = 'none';
 }
 
 
@@ -134,4 +197,56 @@ function addLayer(){
 // Displays the summary of the model
 function summary(){
   tfvis.show.modelSummary({name: 'Model Summary'}, model);
+}
+
+// Compile and fit the modelSummary
+function fitModel(){
+  const myForm2 = document.getElementById('form2');
+  const notice1 = document.getElementById('notice1');
+  notice1.style.display = "inline";
+  myForm2.style.display = "inline";
+}
+
+// Training the Model
+
+async function train(epoch, batch)
+{
+  const history = await model.fit(x, y,
+                    { epochs: epoch,
+                      batchSize: batch,
+                      callbacks:{
+                          onEpochEnd: async(epoch, logs) =>{
+                              console.log("Epoch:"
+                                          + epoch
+                                          + " Loss:"
+                                          + logs.loss);}}});
+}
+
+// Start training
+async function runModel(){
+  const optimizer = document.getElementById('Optimizers').value;
+  const loss = document.getElementById('Loss').value;
+  const metrics = document.getElementById('metrics').value;
+  const epoch = Number(document.getElementById('epochs').value);
+  const batch = Number(document.getElementById('batch').value);
+
+  // Prompting user to fill all the necessary Details
+
+  if ((optimizer == '') || (loss == '') || (metrics == '') || (epoch <= 0) || (batch <= 0))
+  {
+    alert("Kindly fill all the details properly");
+  }
+  else{
+    model.compile({
+      optimizer: optimizer,
+      loss:loss,
+      metrics: [metrics]
+    });
+
+    train(epoch, batch);
+
+    const tail = document.getElementById('final');
+    tail.textContent = "Model is training... You can view it on console";
+  }
+
 }

@@ -21,30 +21,41 @@
       </div>
     </header>
 
-    <!-- Add Data Button -->
+    <!-- Add Data Buttons -->
     <div class="container">
-      <button id = "add-data" class = "submit" name="button" onclick="addData()">
-        Add Data</button>
+      <button id = "add-data1" class = "submit" name="button" onclick="addData1()">
+        Add Regression Demo Data</button>
+    </div>
+    <div class="container">
+      <button id = "add-data2" class = "submit" name="button" onclick="addData2()">
+        Add Classification Demo Data</button>
     </div>
 
 
+
+    </div>
     <!-- Add First Layer Button -->
     <div class="container">
-      <button id = "add-button" class = "addButton" name="addButton" onclick="createModel()">
+      <button id = "add-button" class = "addButton" name="addButton" onclick="createModel()" disabled = "true">
         Add first Layer</button>
+    </div>
+
+    <div class="clr">
+    <div class="container">
+      <h2 id = 'start'></h2>
     </div>
 
     <!-- Add Dense Layer Button -->
     <div class="container">
-      <button id = "dense-button" class = "buttonDense" name="button" onclick="denseLayer()">
+      <button id = "dense-button" class = "button" name="button" onclick="denseLayer()">
         Dense Layer</button>
     </div>
 
     <!-- Form to get detail of the dense layer-->
     <div class="container">
-      <form class="denseLayer" id='form1'>
+      <form class="form" id='form1'>
         <div>
-          <h4 id = "notice"></h4>
+          <h4 id = "notice" class = "header-file"></h4>
         </div>
         <div>
           <label>Hidden Units: </label>
@@ -58,6 +69,7 @@
           <label>Activation Function</label>
           <select id = 'activationFxn' name="activationFunction">
             <option value="">None</option>
+            <option value="linear">Linear</option>
             <option value="relu">ReLU</option>
             <option value="tanh">TanH</option>
             <option value="sigmoid">Sigmoid</option>
@@ -75,9 +87,62 @@
 
     <!-- Fit Model Button -->
     <div class="container">
-      <button id = "fit-button" class = "fitModel" name="button" onclick="fitModel()">
+      <button id = "fit-button" class = "button" name="button" onclick="fitModel()">
         Fit Model to the dataset</button>
     </div>
+
+    <!-- Form to get data related to the fitting of the model -->
+    <div class="container">
+      <form class="form" action = "training.html" action = "post" id='form2'>
+        <div>
+          <h4 id = "notice1" class = 'header-file'>Select parameters for fitting</h4>
+        <div>
+          <label>Optimizers</label>
+          <select id = 'Optimizers' name="Optimizers">
+            <option value="">None</option>
+            <option value="adam">Adam</option>
+            <option value="rmsprop">RMSProp</option>
+            <option value="sgd">Stochastic Gradient Descent</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Loss</label>
+          <select id = 'Loss' name="Loss">
+            <option value="">None</option>
+            <option value="meanSquaredError">Mean Squared Error</option>
+            <option value="hinge">Hinge</option>
+            <option value="binaryCrossentropy">Binary CrossEntropy</option>
+            <option value="categoricalCrossentropy">Categorical Crossentropy</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Metrics</label>
+          <select id = 'metrics' name="Metrics">
+            <option value="">None</option>
+            <option value="accuracy">Accuracy</option>
+            <option value="mse">Mean Squared Error</option>
+          </select>
+        </div>
+
+        <div>
+          <label>No of Epochs</label>
+          <input type="number" name="epochs" id = "epochs" placeholder="0">
+        </div>
+
+        <div>
+          <label>Batch Size</label>
+          <input type="number" name="batch" id = "batch" placeholder="0">
+        </div>
+        <div>
+          <button type="button" name="submit" class = "submit" onclick="runModel()">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="clr"></div>
+
 
     <!-- Add Extra layer button -->
     <div class="container">
@@ -89,6 +154,10 @@
     <div class="container">
       <button id = "summary-button" class = "summaryModel" name="button" onclick="summary()">
         Display Summary</button>
+    </div>
+
+    <div class="container">
+      <h1 id = 'final'></h1>
     </div>
   </body>
 </html>

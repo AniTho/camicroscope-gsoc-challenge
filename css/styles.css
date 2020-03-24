@@ -17,8 +17,8 @@
 }
 
 .addButton{
-  background-color: #c1ff86;
-  color: #000000;
+  background-color: #333333;
+  color: #ffffff;
   font-size: 20px;
   padding: 20px;
   border-radius: 10px;
@@ -27,7 +27,15 @@
   box-sizing: border-box;
 }
 
-.buttonDense{
+.addButton:hover{
+  cursor: pointer;
+}
+
+.clr{
+  clear:both;
+}
+
+.button{
   background-color: #b44e4e;
   color: #ffffff;
   font-size: 20px;
@@ -40,11 +48,11 @@
   margin-bottom: 20px;
 }
 
-.buttonDense:hover{
+.button:hover{
   cursor: pointer;
 }
 
-#form1{
+.form{
   padding-left: 20px;
   margin-bottom: 20px;
   float:left;
@@ -70,27 +78,13 @@ label{
 .submit:hover{
   cursor: pointer;
 }
-.clr{
-  clear:both;
-}
 
-#notice{
+
+.header-file{
   display:none;
 }
 
-.fitModel{
-  background-color: #b44e4e;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  display: none;
 
-}
-
-.fitModel:hover{
-  cursor: pointer;
-}
 
 .addLayer{
   background-color: #b44e4e;
