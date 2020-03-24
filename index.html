@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Deep Learning GUI</title>
+    <link rel = "stylesheet" href = "css/styles.css">
+    <!-- Import TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    <!-- Import tfjs-vis -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+
+    <script src = "Javascript/main.js"></script>
+
+    <script src = "Javascript/data.js"></script>
+  </head>
+  <body>
+    <header id = 'main-header' class = 'heading'>
+      <div class="container">
+        <h1 id = 'header-title'>GUI for Deep Learning Models</h1>
+
+      </div>
+    </header>
+
+    <!-- Add Data Button -->
+    <div class="container">
+      <button id = "add-data" class = "submit" name="button" onclick="addData()">
+        Add Data</button>
+    </div>
+
+
+    <!-- Add First Layer Button -->
+    <div class="container">
+      <button id = "add-button" class = "addButton" name="addButton" onclick="createModel()">
+        Add first Layer</button>
+    </div>
+
+    <!-- Add Dense Layer Button -->
+    <div class="container">
+      <button id = "dense-button" class = "buttonDense" name="button" onclick="denseLayer()">
+        Dense Layer</button>
+    </div>
+
+    <!-- Form to get detail of the dense layer-->
+    <div class="container">
+      <form class="denseLayer" id='form1'>
+        <div>
+          <h4 id = "notice"></h4>
+        </div>
+        <div>
+          <label>Hidden Units: </label>
+          <input id = 'hiddenUnit' type="number" name="number" placeholder="0">
+        </div>
+        <div>
+          <label id = "inputDimLab">Input Dims: </label>
+          <input id = 'inputDim' type="number" name="number" placeholder="0">
+        </div>
+        <div>
+          <label>Activation Function</label>
+          <select id = 'activationFxn' name="activationFunction">
+            <option value="">None</option>
+            <option value="relu">ReLU</option>
+            <option value="tanh">TanH</option>
+            <option value="sigmoid">Sigmoid</option>
+            <option value="softmax">Softmax</option>
+          </select>
+        </div>
+        <div>
+          <button type="button" id = 'submit' name="submit" class = "submit" onclick="onClick()">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="clr"></div>
+
+
+    <!-- Fit Model Button -->
+    <div class="container">
+      <button id = "fit-button" class = "fitModel" name="button" onclick="fitModel()">
+        Fit Model to the dataset</button>
+    </div>
+
+    <!-- Add Extra layer button -->
+    <div class="container">
+      <button id = "add-layer" class = "addLayer" name="button" onclick="addLayer()">
+        Add another layer</button>
+    </div>
+
+    <!-- Display Summary Button -->
+    <div class="container">
+      <button id = "summary-button" class = "summaryModel" name="button" onclick="summary()">
+        Display Summary</button>
+    </div>
+  </body>
+</html>
