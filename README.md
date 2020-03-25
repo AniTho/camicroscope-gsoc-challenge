@@ -3,7 +3,7 @@ This repository contains implementation of second idea challenge by camicroscope
 
 # About Challenge
 
-Implement a web based GUI interface that allow user to select a layer for training of deep learning models.
+Implement a web based GUI interface that allow user to select a layer for training of deep learning models. 
 
 ## Technological Stack
 
@@ -15,6 +15,8 @@ Implement a web based GUI interface that allow user to select a layer for traini
 ## Requirements
 
 Nothing. The repository is self-contained. User just have to run **index.html** file.
+
+Access the page from <a href = "https://anitho.github.io/camicroscope-gsoc-challenge/"> here </a>.
 
 
 ## Note:- 
