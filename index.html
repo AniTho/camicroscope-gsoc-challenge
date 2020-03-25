@@ -3,23 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Deep Learning GUI</title>
-
     <link rel = "stylesheet" href = "css/styles.css">
     <!-- Import TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
     <!-- Import tfjs-vis -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
-
     <script src = "Javascript/main.js"></script>
   </head>
   <body>
     <header id = 'main-header' class = 'heading'>
       <div class="container">
         <h1 id = 'header-title'>GUI for Deep Learning Models</h1>
-
       </div>
     </header>
-
     <!-- Add Data Buttons -->
     <div class="container">
       <button id = "add-data1" class = "dataButton" name="button" onclick="addData1()">
@@ -29,27 +25,22 @@
       <button id = "add-data2" class = "dataButton" name="button" onclick="addData2()">
         Add Classification Demo Data</button>
     </div>
-
     <div class="clr"></div>
-
     </div>
     <!-- Add First Layer Button -->
     <div class="container">
       <button id = "add-button" class = "addButton" name="addButton" onclick="createModel()" disabled = "true">
         Add first Layer</button>
     </div>
-
     <div class="clr">
     <div class="container">
       <h2 id = 'start'></h2>
     </div>
-
     <!-- Add Dense Layer Button -->
     <div class="container">
       <button id = "dense-button" class = "button" name="button" onclick="denseLayer()">
         Dense Layer</button>
     </div>
-
     <!-- Form to get detail of the dense layer-->
     <div class="container">
       <form class="form" id='form1'>
@@ -80,16 +71,12 @@
         </div>
       </form>
     </div>
-
     <div class="clr"></div>
-
-
     <!-- Fit Model Button -->
     <div class="container">
       <button id = "fit-button" class = "button" name="button" onclick="fitModel()">
-        Fit Model to the dataset</button>
+        model.fit()</button>
     </div>
-
     <!-- Form to get data related to the fitting of the model -->
     <div class="container">
       <form class="form" action = "training.html" action = "post" id='form2'>
@@ -104,7 +91,6 @@
             <option value="sgd">Stochastic Gradient Descent</option>
           </select>
         </div>
-
         <div>
           <label>Loss</label>
           <select id = 'Loss' name="Loss">
@@ -115,7 +101,6 @@
             <option value="categoricalCrossentropy">Categorical Crossentropy</option>
           </select>
         </div>
-
         <div>
           <label>Metrics</label>
           <select id = 'metrics' name="Metrics">
@@ -124,12 +109,10 @@
             <option value="mse">Mean Squared Error</option>
           </select>
         </div>
-
         <div>
           <label>No of Epochs</label>
           <input type="number" name="epochs" id = "epochs" placeholder="0">
         </div>
-
         <div>
           <label>Batch Size</label>
           <input type="number" name="batch" id = "batch" placeholder="0">
@@ -139,22 +122,17 @@
         </div>
       </form>
     </div>
-
     <div class="clr"></div>
-
-
     <!-- Add Extra layer button -->
     <div class="container">
       <button id = "add-layer" class = "addLayer" name="button" onclick="addLayer()">
         Add another layer</button>
     </div>
-
     <!-- Display Summary Button -->
     <div class="container">
       <button id = "summary-button" class = "summaryModel" name="button" onclick="summary()">
         Display Summary</button>
     </div>
-
     <div class="container">
       <h1 id = 'final'></h1>
     </div>
